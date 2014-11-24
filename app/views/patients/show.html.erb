@@ -1,23 +1,26 @@
 <h1><%= @patient.full_name %></h1>
+<%= link_to 'Delete User', patient_path(@patient), method: :delete, data: {confirm: 'Are you sure?'} %>
+
 <h2>Prescriptions</h2>
 <%= link_to "Add Prescription", new_patient_prescription_path(@patient) %>
 
 <table class="table">
-    <thead>
-    <tr>
-        <th> Medication </th>
-        <th> Dosage / Schedule </th>
-        <th> Dates </th>
-    </tr>
-    </thead>
+  <thead>
+  <tr>
+    <th> Medication </th>
+    <th> Dosage / Schedule </th>
+    <th> Dates </th>
+  </tr>
+  </thead>
 
-    <tbody>
-    <% @patient.prescriptions.each do |prescription| %>
-        <tr>
-            <td> <%= prescription.medication_name %> </td>
-            <td> <%= prescription.dosage_with_schedule %> </td>
-            <td> <%= prescription.dates %> </td>
-        </tr>
-    <% end %>
-    </tbody>
+  <tbody>
+  <% @patient.prescriptions.each do |prescription| %>
+    <tr>
+      <td> <%= prescription.medication_name %> </td>
+      <td> <%= prescription.dosage_with_schedule %> </td>
+      <td> <%= prescription.dates %> </td>
+      <td> <%= link_to 'Delete prescription', patient_prescription_path(@patient, prescription), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>

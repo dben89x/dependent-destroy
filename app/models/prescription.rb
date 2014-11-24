@@ -36,7 +36,7 @@ class Prescription < ActiveRecord::Base
   def dosage_starts_with_number
     if dosage.present? && !dosage.match(/^\d/)
       errors.add(:dosage, "must start with a number")
-    end 
+    end
   end
 
   def starts_on_later_than_ends_on
